@@ -1,5 +1,7 @@
 package com.ola.registration.model.dao.utils;
 
+import com.ola.registration.model.entity.Student;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,8 +60,25 @@ public class DatabaseConnection {
 
         return res;
     }
-    public void insert(String query){
+    public void insert(String query, Student s){
+        try {
+            pre = getConnection().getConnection().prepareStatement(query);
+
+            pre.setString(1,s.getId());
+            pre.setString(2,s.getFirstName());
+            pre.setString(3,s.getLastName());
+            pre.setString(4,s.getEmail());
+            pre.setString(5,s.getPassword());
+            pre.setString(6,s.getJoinYear());
+
+            pre.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
 
 
     }
+}
+
+
 }

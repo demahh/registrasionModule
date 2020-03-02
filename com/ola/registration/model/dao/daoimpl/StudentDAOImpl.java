@@ -36,14 +36,17 @@ public class StudentDAOImpl implements StudentDAO  {
     }
 
     public void save(Student s) {
-        String query = " insert * into student1.student "
-                + (" id,firstname,lastname,email,password,joinYear ") + " Values(?,?,?,?,?,?)";
+        String query = " insert * into student1.student " +" values(?,?,?,?,?,?)";
 
-
+        databaseConnection.insert(query,s);
 
     }
 
     public void update(Student r) {
+        String query = " update  into student1.student " +" values(?,?,?,?,?,?)";
+
+        databaseConnection.insert(query,r);
+
 
     }
 

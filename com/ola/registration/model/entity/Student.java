@@ -5,6 +5,15 @@ public class Student {
     private String id;
     private String firstName;
 
+    public Student(String id, String firstName, String lastName, String email, String password, String joinYear) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        Password = password;
+        this.joinYear = joinYear;
+    }
+
     public String getId() {
         return id;
     }
