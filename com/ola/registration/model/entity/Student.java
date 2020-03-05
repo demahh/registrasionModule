@@ -4,6 +4,10 @@ public class Student {
 
     private String id;
     private String firstName;
+    private String lastName;
+    private String email;
+    private String Password;
+    private String joinYear;
 
     public Student(String id, String firstName, String lastName, String email, String password, String joinYear) {
         this.id = id;
@@ -62,9 +66,6 @@ public class Student {
         this.joinYear = joinYear;
     }
 
-    private String lastName;
-    private String email;
-    private String Password;
-    private String joinYear;
+
 
 }

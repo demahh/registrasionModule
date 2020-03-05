@@ -8,11 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    PreparedStatement pre ;
-    ResultSet res;
+    private PreparedStatement preparedStatement ;
+    private ResultSet resultSet;
 
     private JeaQueue <ConnectionWrapper> connection;
-    ConnectionWrapper connectionWrapper;
+    private ConnectionWrapper connectionWrapper;
     private String url;
     private String userName;
     private String password;
@@ -46,39 +46,79 @@ public class DatabaseConnection {
     }
 
 
-    public ResultSet select(String query,String id) {
+    public ResultSet select(String query,String idREmail) {
 
         try {
-            pre = getConnection().getConnection().prepareStatement(query);
+            preparedStatement = getConnection().getConnection().prepareStatement(query);
 
-            pre.setString(1,id);
-            res=pre.executeQuery();
+            preparedStatement.setString(1,idREmail);
+            resultSet=preparedStatement.executeQuery();
+
+             // release();
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.getMessage();
         }
 
-        return res;
+        return resultSet;
     }
-    public void insert(String query, Student s){
+
+
+    public void insert(String query, Student student){
         try {
-            pre = getConnection().getConnection().prepareStatement(query);
+            preparedStatement = getConnection().getConnection().prepareStatement(query);
 
-            pre.setString(1,s.getId());
-            pre.setString(2,s.getFirstName());
-            pre.setString(3,s.getLastName());
-            pre.setString(4,s.getEmail());
-            pre.setString(5,s.getPassword());
-            pre.setString(6,s.getJoinYear());
+            preparedStatement.setString(1,student.getId());
+            preparedStatement.setString(2,student.getFirstName());
+            preparedStatement.setString(3,student.getLastName());
+            preparedStatement.setString(4,student.getEmail());
+            preparedStatement.setString(5,student.getPassword());
+            preparedStatement.setString(6,student.getJoinYear());
 
-            pre.executeUpdate();
+            preparedStatement.executeUpdate();
+            //release();
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-
-
-    }
+            e.getMessage(); }
 }
 
+
+    public void update(String query, Student student){
+        try {
+        preparedStatement = getConnection().getConnection().prepareStatement(query);
+
+            preparedStatement.setString(1,student.getFirstName());
+            preparedStatement.setString(2,student.getLastName());
+            preparedStatement.setString(3,student.getEmail());
+            preparedStatement.setString(4,student.getPassword());
+            preparedStatement.setString(5,student.getJoinYear());
+            preparedStatement.setString(6,student.getId());
+
+        preparedStatement.executeUpdate();
+
+
+        } catch (Exception e) {
+            e.getMessage();}
+    }
+
+
+    public void deleteStudent(String query, String id){
+
+        String resultDelete="The student cant delete ";
+
+        try {
+                preparedStatement= getConnection().getConnection().prepareStatement(query);
+
+                preparedStatement.setString(1, id);
+                preparedStatement.executeUpdate();
+                resultDelete="The Student with ID ="+id+" has been deleted ";
+
+            //release();
+
+        } catch (Exception e) {
+              e.getMessage();}
+
+        System.out.println(resultDelete);
+        }
 
 }
