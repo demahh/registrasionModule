@@ -1,6 +1,6 @@
-package com.ola.registration.model.dao;
+package SDO.com.ola.registration.model.dao;
 
-import com.ola.registration.model.entity.Student;
+import SDO.com.ola.registration.model.entity.Student;
 
 import java.sql.SQLException;
 

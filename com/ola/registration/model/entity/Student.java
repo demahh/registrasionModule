@@ -1,4 +1,4 @@
-package com.ola.registration.model.entity;
+package SDO.com.ola.registration.model.entity;
 
 public class Student {
 

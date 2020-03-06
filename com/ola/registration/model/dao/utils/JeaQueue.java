@@ -1,4 +1,4 @@
-package com.ola.registration.model.dao.utils;
+package SDO.com.ola.registration.model.dao.utils;
 
 import java.util.LinkedList;
 

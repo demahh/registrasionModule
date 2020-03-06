@@ -1,6 +1,6 @@
-package com.ola.registration.model.dao.utils;
+package SDO.com.ola.registration.model.dao.utils;
 
-import com.ola.registration.model.entity.Student;
+import SDO.com.ola.registration.model.entity.Student;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
